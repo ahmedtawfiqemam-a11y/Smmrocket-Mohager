@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: telegram-smm-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.11
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: SMMROCKET_API_KEY
+        sync: false
+      - key: OWNER_TELEGRAM_ID
+        sync: false
+      - key: CO_OWNER_TELEGRAM_IDS
+        sync: false
+      - key: PYTHONUNBUFFERED
+        value: "1"
